@@ -9,6 +9,12 @@ import Logo from'../../assets/imges/logo.svg'
 import { makeStyles } from "@material-ui/core/styles";
 import {Link} from 'react-router-dom'
 import { MenuItem, Menu } from "@material-ui/core";
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles'
+import MenuIcon from '@material-ui/icons/Menu';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import IconButton from'@material-ui/core/IconButton'
+
 const links = [
   {
     title: "Home",
@@ -54,9 +60,26 @@ const useStyles = makeStyles((theme) => ({
   toolbarMargin: {
     ...theme.mixins.toolbar,
     marginBottom: "3em",
+    [theme.breakpoints.down('md')]: {
+      height: "2em",
+    },
+    [theme.breakpoints.down('sm')]: {
+      height: "1.25em",
+    },
+
+
   },
   logo: {
-    height: "80px",
+    height: "7em",
+    //this to soport responce the application image
+    [theme.breakpoints.down('md')]:{
+      height: "6em",
+    },
+    [theme.breakpoints.down('sm')]:{
+      height: "5em",
+    },
+
+
   },
   tabContainer: {
     marginLeft: "auto",
@@ -114,6 +137,17 @@ const useStyles = makeStyles((theme) => ({
       borderBottom: "3px solid #51c9f5",
     },
   },
+  drawer:{
+    marginLeft:"auto",
+    "&:hover":{
+      backgroundColor:"transparent",
+
+    }
+  },
+  menuIcon:{
+    width:"50px",
+    height:"50px"
+  }
 }));
 
 function ElevationScroll(props) {
@@ -130,13 +164,17 @@ function ElevationScroll(props) {
 }
 
 
+
 export default function Header(props) {
+  const theme=useTheme();
   const classes = useStyles();
 const [value,setValue]=React.useState(0)
 const [anchorEle,setAnchorEle]=React.useState(null);
 const [open,setOpen]=React.useState(false);
 const [indexSelected,setSelectedIndex]=React.useState(0);
 const handleChange=(e,value)=>setValue(value);
+
+
 
 const handleOpen = (event) => {
   setAnchorEle(event.currentTarget);
@@ -203,8 +241,94 @@ switch (window.location.pathname) {
 }
 
 },[value])
-  return (
-    <React.Fragment>
+  const matches = useMediaQuery(theme.breakpoints.down('md'));
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+  const tabs = (
+    <>
+      <Tabs
+        className={classes.tabContainer}
+        onChange={() => console.log("fdfd")}
+        aria-label="navItems"
+        value={0}
+        indicatorColor="primary"
+      >
+        <Tab label="Home" className={classes.tab} />
+        <Tab
+          label="Services"
+          aria-haspopup={anchorEle ? "true" : undefined}
+          className={classes.tab}
+          onMouseOver={(event) => handleOpen(event)}
+          onClose={(event) => handleClose(event)}
+          aria-owns={anchorEle ? "simple-menu" : undefined}
+        />
+        <Tab label="The Revolution" className={classes.tab} />
+        <Tab label="About Us" className={classes.tab} />
+        <Tab label="Contact Us" className={classes.tab} /> */}
+            </Tabs>
+      <Button
+        variant="contained"
+        className={classes.button}
+        color="secondary"
+      >
+        Free Estimate
+            </Button>
+      <Menu
+        classes={{
+          root: classes.meunItem,
+          paper: classes.paper,
+        }}
+        elevation={0}
+        onClose={(event) => handleClose(event)}
+        id="simple-menu"
+        anchorEl={anchorEle}
+        open={open}
+
+        MenuListProps={{ onMouseLeave: handleClose }}
+        onClose={handleClose}
+      >
+        {MenuOptions.map((item, index) => (
+          <MenuItem
+            key={`index${item.name}`}
+            onClick={(event) => {
+              handleWithMenuOptions(event, index);
+              setValue(0);
+              handleClose();
+            }}
+            classes={{
+              root: classes.menuAll,
+            }}
+            component={Link}
+            to={item.link}
+            selected={index === indexSelected && value === 1}
+          >
+            {item.name}
+          </MenuItem>))}
+      </Menu>
+    </>)
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+
+  const Drawer=(
+    <>
+      <SwipeableDrawer disableBackdropTransition={!iOS} disableDiscovery={iOS}
+        open={mobileOpen} onClose={() => setMobileOpen(false)}
+        anchor="right"
+        swipeAreaWidth={30}
+        onOpen={() => setMobileOpen(true)}>
+        <IconButton className={classes.drawer} onClick={handleDrawerToggle}
+        disableRipple>
+          <MenuIcon className={classes.menuIcon}/>
+        </IconButton>
+
+    </SwipeableDrawer>
+  </>
+  )
+return (
+    <>
       <ElevationScroll>
         <AppBar position="fixed" color="primary">
           <Toolbar disableGutters>
@@ -213,71 +337,14 @@ switch (window.location.pathname) {
               to="/"
               className={classes.logoContainer}
               onClick={() => setValue(0)}
-              disableRipple
-            >
+              disableRipple>
               <img src={Logo} className={classes.logo} alt="logo company" />
             </Button>
-            <Tabs
-              className={classes.tabContainer}
-              onChange={() => console.log("fdfd")}
-              aria-label="navItems"
-              value={0}
-              indicatorColor="primary"
-            >
-              <Tab label="Home" className={classes.tab} />
-              <Tab
-                label="Services"
-                aria-haspopup={anchorEle ? "true" : undefined}
-                className={classes.tab}
-                onMouseOver={(event) => handleOpen(event)}
-                onClose={(event) => handleClose(event)}
-                aria-owns={anchorEle ? "simple-menu" : undefined}
-              />
-              <Tab label="The Revolution" className={classes.tab} />
-              <Tab label="About Us" className={classes.tab} />
-              <Tab label="Contact Us" className={classes.tab} /> */}
-            </Tabs>
-            <Button
-              variant="contained"
-              className={classes.button}
-              color="secondary"
-            >
-              Free Estimate
-            </Button>
-            <Menu
-              classes={{
-                root: classes.meunItem,
-                paper: classes.paper,
-              }}
-              elevation={0}
-              onClose={(event) => handleClose(event)}
-              id="simple-menu"
-              anchorEl={anchorEle}
-              open={open}
-              onClose={handleClose}
-              MenuListProps={{ onMouseLeave: handleClose }}
-            >
-              {MenuOptions.map((item, index) => (
-          <MenuItem
-            key={`index${item.name}`}
-            onClick={(event) => {
-                    handleWithMenuOptions(event, index);
-                    setValue(0);
-                    handleClose();
-                  }}
-                  classes={{
-                    root: classes.menuAll,
-                  }}
-                  component={Link}
-                  to={item.link}
-                  selected={index===indexSelected && value===1}
-                >
-                  {item.name}
-                </MenuItem>              ))}
-            </Menu>
+          {matches ? Drawer :tabs}
+
           </Toolbar>
         </AppBar>
       </ElevationScroll>
-    </React.Fragment>
-  );}
+    </>
+  )}
 
