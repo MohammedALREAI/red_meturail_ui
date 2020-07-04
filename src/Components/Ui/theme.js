@@ -3,11 +3,26 @@ const arcBlue="#0b72b9"
 const arcOrange = "#ffba60";
 
 
-export default createMuiTheme({
+const theme =createMuiTheme({
   palette: {
     common: {
       arcBlue: `${arcBlue}`,
       arcOrange: `${arcOrange}`,
+        white: "white",
+
+        green: "#009245",
+        green2: "#39b54a",
+
+        red: "#ff0000",
+        red2: "#d90000",
+      white2:"#cccccc",
+
+      white3: "#b3b3b3",
+
+      yellow:"#fcee21",
+        pank: "#93278f",
+
+
     },
     primary: {
       main: `${arcBlue}`,
@@ -30,35 +45,7 @@ export default createMuiTheme({
         fontWeight: 400,
       },
     },
-    color: {
-      white: {
-        color: "white",
-      },
-      green: {
-        color: "#009245",
-      },
-      green2: {
-        color: "#39b54a",
-      },
-      red: {
-        color: "#ff0000",
-      },
-      red2: {
-        color: "#d90000",
-      },
-      white2: {
-        color: "#cccccc",
-      },
-      white3: {
-        color: "#b3b3b3",
-      },
-      yellow: {
-        color: "#fcee21",
-      },
-      pank: {
-        color: "#93278f",
-      },
-    },
+
 
     fontType: {
       Roboto: {
@@ -71,6 +58,7 @@ export default createMuiTheme({
       Courier: {
         fontFamily: "Courier Prime, monospace",
       },
-    },
-  },
+    },}
 });
+
+export default theme;
