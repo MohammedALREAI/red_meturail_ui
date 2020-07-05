@@ -1,6 +1,6 @@
 import React from "react";
-import Footer from "../Components/myComponent/Footer";
-import Header from "../Components/myComponent/Header";
+import Header from "../Components/Header";
+import Footer from "../Components/Footer";
 
 const Layout = (props) => {
   const [value, setValue] = React.useState(0);

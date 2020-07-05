@@ -40,24 +40,7 @@ const LoadingStyle = {
       opacity: 1,
     },
   },
-  learnMore: {
-    color: "#0b72b9",
-    fontFamily: "Roboto",
-    fontSize: "16px",
-    fontWeight: 700,
-    lineHeight: "28px",
-    border: "2px solid #0b72b9",
-    backgroundColor: "white",
-    textTransform: "capitalize",
-    "& span": {
-      marginLeft: "9px",
-    },
-  },
-  "&:hover": {
-    color: "black",
-    border: `2px solid ${theme.palette.common.arcOrange}`,
-    backgroundColor: "#0b72b9",
-  },
+
   hearo: {
     marginTop: "5em",
     [theme.breakpoints.down("md")]: {
@@ -74,21 +57,10 @@ const LoadingStyle = {
       marginLeft: 0,
     },
   },
-  CustomText: {
-    color: "#0b72b9",
-    fontFamily: "Raleway",
-    fontSize: "32px",
-    fontWeight: 700,
-    lineHeight: "28px",
-  },
-  subtitle: {
-    color: "#ffffff",
-    fontFamily: "Pacifico",
-    fontSize: 24,
-    fontWeight: 400,
-    lineHeight: 30,
-    marginTop: "1em",
-  },
+
+
+
+
 };
 
 export default LoadingStyle;

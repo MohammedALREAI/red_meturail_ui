@@ -1,26 +1,27 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
-import footerStyle from "../../assets/jss/Footer";
+import footerStyle from "../assets/jss/Footer";
+
 import { Grid } from "@material-ui/core";
-import LogoFooter from "../../assets/imges/Footer Adornment.svg";
+import LogoFooter from "../assets/imges/Footer Adornment.svg";
 import Hidden from "@material-ui/core/Hidden";
 
 const socialMedia = [
   {
     name: "facebook",
     url: "www.facebook.com",
-    icon: require("../../assets/imges/facebook.svg"),
+    icon: require("../assets/imges/facebook.svg"),
   },
   {
     name: "twitter",
     url: "www.twitter.com",
-    icon: require("../../assets/imges/twitter.svg"),
+    icon: require("../assets/imges/twitter.svg"),
   },
   {
     name: "instagram",
     url: "www.instagram.com",
-    icon: require("../../assets/imges/instagram.svg"),
+    icon: require("../assets/imges/instagram.svg"),
   },
 ];
 const links = [

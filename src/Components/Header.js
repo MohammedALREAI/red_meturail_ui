@@ -5,7 +5,7 @@ import Tabs from "@material-ui/core/Tabs"
 import Tab from "@material-ui/core/Tab"
 import Button from "@material-ui/core/Button"
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
-import Logo from'../../assets/imges/logo.svg'
+import Logo from'../assets/imges/logo.svg'
 import { makeStyles } from "@material-ui/core/styles";
 import {Link} from 'react-router-dom'
 import { MenuItem, Menu } from "@material-ui/core";
@@ -18,7 +18,7 @@ import IconButton from'@material-ui/core/IconButton'
 import List from'@material-ui/core/List'
 import ListItem from'@material-ui/core/ListItem'
 import ListItemText from'@material-ui/core/ListItemText'
-import headerStyle from"../../assets/jss/Header";
+import headerStyle from"../assets/jss/Header";
 import { MenuOptions } from "./utils";
 
 

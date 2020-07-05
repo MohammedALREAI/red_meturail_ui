@@ -1,11 +1,10 @@
 import React from 'react';
 import './App.css';
 import { ThemeProvider } from '@material-ui/styles';
-
 import {BrowserRouter,Switch,Route} from 'react-router-dom'
 import theme from "./Components/Ui/theme";
-import Layout from './Layout/layout.jsx';
-import LoadingPage from "./Components/myComponent/LoadingPage";
+import Layout from './Layout/layout';
+import LoadingPage from './Components/LoadingPage';
 
 const simpleItem=()=><div> simple app</div>
 function App() {
